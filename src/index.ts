@@ -1,8 +1,10 @@
-import { MatchReader } from "./entities/MatchReader";
+import { CsvFileReader } from "./composotion/CsvFileReader";
+import { MatchReader } from "./composotion/MatchReader";
 
-const reader = new MatchReader("./football.csv");
-reader.read();
+const reader = new CsvFileReader("./football.csv");
+const matchReader = new MatchReader(reader);
+matchReader.load();
 
-const data = reader.data;
+const data = matchReader.matches;
 
 console.log({ data });

@@ -4,7 +4,6 @@ import { FileReader } from "./FileReader";
 type MatchData = [Date, string, string, number, number, MatchResult, string];
 export class MatchReader extends FileReader<MatchData> {
   data: MatchData[] = [];
-
   mapRaw(row: string[]): MatchData {
     return [
       parseStringToDate(row[0]),

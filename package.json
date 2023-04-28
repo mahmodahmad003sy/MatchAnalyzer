@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:build": "tsc -w",
     "start:watch": "nodemon ./build/index.js",
-    "start": "concurrently yarn:start:* "
+    "start": "concurrently team:${npm_config_team} yarn:start:*"
   },
   "keywords": [],
   "author": "",

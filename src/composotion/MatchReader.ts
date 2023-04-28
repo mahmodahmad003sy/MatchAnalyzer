@@ -1,13 +1,27 @@
 import { MatchResult } from "../enum/MatchResult";
 import { parseStringToDate } from "../utils";
+import { CsvFileReader } from "./CsvFileReader";
 
 interface DataReader {
   data: string[][];
   read(): void;
 }
 
-type MatchData = [Date, string, string, number, number, MatchResult, string];
+export type MatchData = [
+  Date,
+  string,
+  string,
+  number,
+  number,
+  MatchResult,
+  string
+];
+
 export class MatchReader {
+  static readFromCsvFile(fileName: string): MatchReader {
+    return new MatchReader(new CsvFileReader(fileName));
+  }
+
   matches: MatchData[] = [];
   constructor(public reader: DataReader) {}
   load() {
